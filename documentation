@@ -1,3 +1,4 @@
+Help on class FormatMatrixSparse in module builtins:
 class FormatMatrixSparse(object)
  |  FormatMatrixSparse:
  |  Clase generadora de formatos para matrices dispersas, tiene la capacidad de recibir matrices dentro de los formatos
@@ -37,9 +38,10 @@ class FormatMatrixSparse(object)
  |      :return: numpy matrix
  |  
  |  get_submatrix(self, dimension)
- |      Método que retorna una submatriz cuadrada de la matriz original apartir de los valores en el formato y 
+ |      Método que retorna una submatriz cuadrada de la matriz original apartir de los valores en el formato y
  |      seguna la dimension definidad, para el caso del formato bsr la dimensión indica el bloque que se desea extraer
  |      de la matriz dispersa original.
+ |      :param: dimension: dimension para la submatriz cuadra ó posición para el bloqu
  |      :return: numpy matrix
  |  
  |  mtype(self)
@@ -47,7 +49,8 @@ class FormatMatrixSparse(object)
  |      :return:
  |  
  |  ratio_compression(self)
- |      Método para obtener la tasa de compresión del formato vs la matriz dispersa
+ |      Método para obtener la tasa de compresión del formato vs la matriz dispersa, valores positivos indican el
+ |      procentaje en reducción en memoria aplicando el formato a la matriz dispersa
  |      :return:
  |  
  |  size_format(self)
@@ -59,3 +62,10 @@ class FormatMatrixSparse(object)
  |      :return: int
  |  
  |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)

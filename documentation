@@ -1,0 +1,61 @@
+class FormatMatrixSparse(object)
+ |  FormatMatrixSparse:
+ |  Clase generadora de formatos para matrices dispersas, tiene la capacidad de recibir matrices dentro de los formatos
+ |  definidos ó generar una matriz dispersa aletoria de acuerdo al formato, dimensión y densidad definidos.
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, format, matrix=None, rows=3, cols=3, density=0.6)
+ |      Método iniciador del objeto FormatMatrixSparse
+ |      :param: format: fomato de la matriz, las opciones diposnibles son: coo, csr, csc, bsr
+ |      :param: matrix: opcional matrix dispersa en alguno de los formatos
+ |      :param: rows: opcional cantidad de filas para la matriz dispersa aleatoria
+ |      :param: cols: opcional cantidad de columnas para la matriz dispersa aleatoria
+ |  
+ |  create_matrix(self)
+ |      Método generador de matrices aleatorias y formatos según las dimensiones y densidad definidas
+ |      :return: format_matrix
+ |  
+ |  get_by_cols(self)
+ |      Método que retorna valores diferentes de cero ordenados por columnas
+ |      :return: list
+ |  
+ |  get_by_rows(self)
+ |      Método que retorna valores diferentes de cero ordenados por filas
+ |      :return: list
+ |  
+ |  get_density(self)
+ |      Método para obtener la densidad de la matriz
+ |      :return:
+ |  
+ |  get_format(self)
+ |      Método que retorna los valores del formato
+ |      :return: tuple
+ |  
+ |  get_matrix(self)
+ |      Método para imprimir y obtener la matrix dispersa, no recomendable para grandes matrices
+ |      :return: numpy matrix
+ |  
+ |  get_submatrix(self, dimension)
+ |      Método que retorna una submatriz cuadrada de la matriz original apartir de los valores en el formato y 
+ |      seguna la dimension definidad, para el caso del formato bsr la dimensión indica el bloque que se desea extraer
+ |      de la matriz dispersa original.
+ |      :return: numpy matrix
+ |  
+ |  mtype(self)
+ |      Método que imprime el tipo de formato del objeto
+ |      :return:
+ |  
+ |  ratio_compression(self)
+ |      Método para obtener la tasa de compresión del formato vs la matriz dispersa
+ |      :return:
+ |  
+ |  size_format(self)
+ |      Método que retorna el tamaño del formato en bytes
+ |      :return: int
+ |  
+ |  size_matrix(self)
+ |      Método que retorna el tamaño de la matriz dispersa en bytes
+ |      :return: int
+ |  
+ |  ----------------------------------------------------------------------

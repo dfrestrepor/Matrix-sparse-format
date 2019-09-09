@@ -53,7 +53,7 @@ class FormatMatrixSparse(object):
         if self.format == 'coo':
             value = list(zip(self.format_matrix.data, self.format_matrix.row, self.format_matrix.col))
             value = sorted(value , key=lambda tup: (tup[1], tup[2]))
-            value = [item[0] for item in value]
+            value = [round(item[0],8)  for item in value]
         elif self.format == 'csr':
             value = self.format_matrix.data
         elif self.format == 'csc':
@@ -82,12 +82,12 @@ class FormatMatrixSparse(object):
         if self.format == 'coo':
             value = list(zip(self.format_matrix.data, self.format_matrix.row, self.format_matrix.col))
             value = sorted(value , key=lambda tup: (tup[2], tup[1]))
-            value = [item[0] for item in value]
+            value = [round(item[0],8) for item in value]
         elif self.format == 'csr':
             value = list(zip(self.format_matrix.data, self.format_matrix.indices))
             value = sorted(value, key=lambda tup: (tup[1]))
             value = [round(x[0], 8) for x in value]
-        elif self.format == 'css':
+        elif self.format == 'csc':
             value = self.format_matrix.data
         elif self.format == 'bsr':
             order = list(zip(self.format_matrix.data, self.format_matrix.indices))
@@ -107,6 +107,7 @@ class FormatMatrixSparse(object):
         Método que retorna una submatriz cuadrada de la matriz original apartir de los valores en el formato y
         seguna la dimension definidad, para el caso del formato bsr la dimensión indica el bloque que se desea extraer
         de la matriz dispersa original.
+        :param: dimension: dimension para la submatriz cuadra ó posición para el bloqu
         :return: numpy matrix
         '''
         submatrix = []
@@ -152,7 +153,6 @@ class FormatMatrixSparse(object):
             for index, item in enumerate(self.format_matrix.indices):
                 if item in colum:
                     diferencia = colum.index(item) - len(fila)
-                    print(diferencia)
                     if diferencia == 0:
                         fila.append(self.format_matrix.data[index])
                     elif diferencia > 0:
@@ -189,7 +189,7 @@ class FormatMatrixSparse(object):
         Método para imprimir y obtener la matrix dispersa, no recomendable para grandes matrices
         :return: numpy matrix
         '''
-        print('Matriz dispersa aleatoria {0} x {1}:\n'.format(self.rows, self.cols), self.format_matrix.toarray(),'\n')
+        print('Matriz dispersa aleatoria {0} x {1}:\n'.format(self.rows, self.cols))
         return np.matrix(self.format_matrix.toarray())
 
     def get_format(self):
@@ -231,10 +231,11 @@ class FormatMatrixSparse(object):
 
     def ratio_compression(self):
         '''
-        Método para obtener la tasa de compresión del formato vs la matriz dispersa
+        Método para obtener la tasa de compresión del formato vs la matriz dispersa, valores positivos indican el
+        procentaje en reducción en memoria aplicando el formato a la matriz dispersa
         :return:
         '''
-        return  (1-self.size_format()/self.size_matrix())
+        return  (1-self.size_format()/self.size_matrix())*100
 
     def get_density(self):
         '''

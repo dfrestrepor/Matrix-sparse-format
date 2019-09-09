@@ -1,2 +1,2 @@
 # Matrix-sparse-format
-Matrices dispersas en ptyhon
+Matrices dispersas en python
